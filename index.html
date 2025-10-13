@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="manifest" href="manifest.json">
 <meta charset="UTF-8">
 <title>S13Chat</title>
 <style>
@@ -181,6 +182,11 @@ function sendMessage(){
 
 chatInput.addEventListener('keypress', e=>{ if(e.key==='Enter') sendMessage(); });
 sendBtn.addEventListener('click', sendMessage);
+  
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/S13Chat/sw.js')
+    .then(() => console.log('Service Worker registered'));
+}
 
 </script>
 </body>
